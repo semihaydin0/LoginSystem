@@ -1,0 +1,12 @@
+D:\Projeler\C#\LoginSystem\bin\Debug\Login Application.exe.config
+D:\Projeler\C#\LoginSystem\bin\Debug\Login Application.exe
+D:\Projeler\C#\LoginSystem\bin\Debug\Login Application.pdb
+D:\Projeler\C#\LoginSystem\bin\Debug\Bunifu_UI_v1.5.3.dll
+D:\Projeler\C#\LoginSystem\obj\Debug\LoginSystem.Forms.Main.resources
+D:\Projeler\C#\LoginSystem\obj\Debug\LoginSystem.Properties.Resources.resources
+D:\Projeler\C#\LoginSystem\obj\Debug\LoginSystem.UserControls.Login.resources
+D:\Projeler\C#\LoginSystem\obj\Debug\Login Application.csproj.GenerateResource.cache
+D:\Projeler\C#\LoginSystem\obj\Debug\Login Application.csproj.CoreCompileInputs.cache
+D:\Projeler\C#\LoginSystem\obj\Debug\Login Application.csproj.CopyComplete
+D:\Projeler\C#\LoginSystem\obj\Debug\Login Application.exe
+D:\Projeler\C#\LoginSystem\obj\Debug\Login Application.pdb
