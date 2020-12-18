@@ -4,7 +4,7 @@
 
 ## Login System
 
-A Modern, stable and advanced login system written in C#.
+A Modern, stable and advanced login system.
 
 ## Visual Materials
 
