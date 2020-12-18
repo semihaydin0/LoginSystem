@@ -102,6 +102,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notice";
             this.Load += new System.EventHandler(this.Notice_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Notice_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Notice_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Notice_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.pbExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbWarning)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbInfo)).EndInit();

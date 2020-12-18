@@ -15,6 +15,10 @@ namespace LoginSystem.Forms
             InitializeComponent();
         }
 
+        const int defaultWidth = 250;
+        private bool mouseDown;
+        private Point lastLocation;
+
         public int pbStatus
         {
             set
@@ -36,30 +40,43 @@ namespace LoginSystem.Forms
         {
             set
             {
-                this.Controls.Clear();
-                this.InitializeComponent();
                 lblNotice.Text = value;
                 SetSize();
             }
         }
 
-        public void SetSize()
+        private void SetSize()
         {
-            this.Width = 250;
-            if (lblNotice.Width > 180)
+            if (lblNotice.Width > 220)
             {
-                this.Width = lblNotice.Width - 180 + this.Width;
-                pbExit.Location = new Point(this.Width - 20, 10);
+                this.Width = lblNotice.Width - 135 + defaultWidth;
             }
-            else
-            {
-                pbExit.Location = new Point(this.Width - 20, 10);
-            }
+            pbExit.Location = new Point(this.Width - 20, 10);
         }
 
         private void Notice_Load(object sender, EventArgs e)
         {
             Main.mc = new Main.MainClass(this);
+        }
+
+        private void Notice_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void Notice_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point((this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                this.Update();
+            }
+        }
+
+        private void Notice_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
 
         private void pbExit_Click(object sender, EventArgs e)
