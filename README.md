@@ -15,8 +15,10 @@ A Modern, stable and advanced login system.
 * In this application, user data is encrypted with **SHA256**.
 
   Encryption Example : steven | C7C084318B6F1BECE6F74FFCE1EA53596070345272DEE8040037497C7D4CBFFE
+  
+* The Remember Me system works according to the user's mac address.
 
-* User data is saved to a [SQLite](https://github.com/sqlite/sqlite) database.
+* The user's login information and mac address are saved in the [SQLite](https://github.com/sqlite/sqlite) database.
 
 ## Important
 
