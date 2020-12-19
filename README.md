@@ -23,6 +23,7 @@ A Modern, stable and advanced login system.
 If you want to test this application. You must enter your own email address and password in the line in the picture.
 
 The verification system sends the verification code to the user via the e-mail address you have entered.
+
 ![Important](./Images/in-app/important.png)
 
 From [here](https://github.com/semihaydin0/LoginSystem/blob/main/UserControls/Verification.cs#L38) you can go to the code block in the screenshot.
