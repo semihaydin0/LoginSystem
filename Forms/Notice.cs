@@ -1,6 +1,6 @@
 ﻿//MIT License
-//Copyright(c) 2020 Semih Aydın
-//UTF - 8
+//Copyright(c) 2021 Semih Aydın
+//UTF-8
 
 using System;
 using System.Drawing;
@@ -81,7 +81,7 @@ namespace LoginSystem.Forms
 
         private void pbExit_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Dispose();
         }
     }
 }
