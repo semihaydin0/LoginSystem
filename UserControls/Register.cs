@@ -1,6 +1,6 @@
 ﻿//MIT License
-//Copyright(c) 2020 Semih Aydın
-//UTF - 8
+//Copyright(c) 2021 Semih Aydın
+//UTF-8
 
 using System;
 using System.Data.SQLite;
@@ -34,9 +34,16 @@ namespace LoginSystem.UserControls
                             {
                                 return 0;
                             }
-                            else return 2;
+                            else
+                            {
+                                return 2;
+                            }
+
                         }
-                        else return 1;
+                        else 
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
@@ -81,6 +88,8 @@ namespace LoginSystem.UserControls
                             Verification.processType = 1;
                             this.Parent.Controls.Add(vrf);
                             this.Parent.Controls.Remove(this);
+                            vrf = null;
+                            Forms.Main.GarbageC();
                         }
                         else if(Forms.Main.processValue == 1)
                         {
@@ -111,8 +120,6 @@ namespace LoginSystem.UserControls
             {
                 Forms.Main.ShowNotice("Please fill in all fields.", 1);
             }
-            vrf = null;
-            Forms.Main.GarbageC();
         }
 
         private void lblFooter_2_Click(object sender, EventArgs e)
@@ -121,7 +128,6 @@ namespace LoginSystem.UserControls
             {
                 this.Parent.Controls.Add(Forms.Main.lgn);
                 this.Parent.Controls.Remove(this);
-                Forms.Main.GarbageC();
             }
         }
 

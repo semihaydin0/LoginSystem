@@ -1,6 +1,6 @@
 ﻿//MIT License
-//Copyright(c) 2020 Semih Aydın
-//UTF - 8
+//Copyright(c) 2021 Semih Aydın
+//UTF-8
 
 using System;
 using System.Data.SQLite;
@@ -16,7 +16,7 @@ namespace LoginSystem.UserControls
         }
 
         private Verification vrf;
-        public static string _email;
+        private string _email { get; set; }
         
         private int recordControl(string _username, string _password)
         {
@@ -100,11 +100,11 @@ namespace LoginSystem.UserControls
                     }
                     else if (Forms.Main.processValue == 1)
                     {
+                        Verification.processType = 3;
                         if (chxbxRememberMe.Checked == true)
                         {
                             Verification.processType = 2;
                         }
-                        else Verification.processType = 3;
                         vrf = new Verification();
                         vrf.EmailAddress = _email;
                         this.Parent.Controls.Add(vrf);
@@ -138,7 +138,6 @@ namespace LoginSystem.UserControls
             {
                 this.Parent.Controls.Add(Forms.Main.rgs);
                 this.Parent.Controls.Remove(this);
-                Forms.Main.GarbageC();
             }
         }
 

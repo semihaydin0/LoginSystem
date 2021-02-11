@@ -1,6 +1,6 @@
 ﻿//MIT License
-//Copyright(c) 2020 Semih Aydın
-//UTF - 8
+//Copyright(c) 2021 Semih Aydın
+//UTF-8
 
 using System;
 using System.Net;
@@ -31,35 +31,35 @@ namespace LoginSystem.UserControls
             {
                 try
                 {
-                    Random rnd = new Random();
-                    MailMessage message = new MailMessage();
-                    SmtpClient client = new SmtpClient();
-                    verificationCode = rnd.Next(100000, 999999);
-                    client.Credentials = new System.Net.NetworkCredential("EMAILADDRESS", "PASSWORD");
-                    client.Port = 587;
-                    client.Host = "smtp.gmail.com﻿";
-                    client.EnableSsl = true;
-                    message.To.Add(EmailAddress);
-                    message.From = new MailAddress("EMAILADDRESS", "Verification Service");
-                    message.Subject = "Verification Code";
-                    message.Body = verificationCode.ToString();
-                    client.Send(message);
-                    rnd = null;
-                    message = null;
-                    client = null;
+                    using (MailMessage message = new MailMessage())
+                    {
+                        Random rnd = new Random();
+                        verificationCode = rnd.Next(100000, 999999);
+                        rnd = null;
+                        using (SmtpClient client = new SmtpClient())
+                        {
+                            client.Credentials = new NetworkCredential("EMAILADDRESS", "PASSWORD");
+                            client.Port = 587;
+                            client.Host = "smtp.gmail.com﻿";
+                            client.EnableSsl = true;
+                            message.To.Add(EmailAddress);
+                            message.From = new MailAddress("EMAILADDRESS", "Verification Service");
+                            message.Subject = "Verification Code";
+                            message.Body = verificationCode.ToString();
+                            client.Send(message);
+                        }
+                    }
                     Forms.Main.GarbageC();
                 }
                 catch (Exception)
                 {
-                    Forms.Main.ntc.NoticeText = "An error occurred while sending the verification code.";
-                    Forms.Main.ntc.pbStatus = 1;
+                    Forms.Main.ShowNotice("An error occurred while sending the verification code.", 1);
                     ChangeControl(Forms.Main.rgs);
                 }
             }
             else
             {
-                Forms.Main.ntc.NoticeText = "Please check your internet connection.";
-                Forms.Main.ntc.pbStatus = 1;
+                Forms.Main.ShowNotice("Please check your internet connection.", 1);
                 ChangeControl(Forms.Main.rgs);
             }
         }
@@ -120,8 +120,7 @@ namespace LoginSystem.UserControls
         private void ChangeControl(UserControl uc)
         {
             this.Parent.Controls.Add(uc);
-            this.Parent.Controls.Remove(this);
-            Forms.Main.GarbageC();
+            this.Dispose();
         }
 
         public string EmailAddress
@@ -166,7 +165,7 @@ namespace LoginSystem.UserControls
                     try
                     {
                         saveMacAddress();
-                        this.Parent.Controls.Remove(this);
+                        this.Dispose();
                         Forms.Main.ShowNotice("Your device information has been saved in the database.", 0);
                     }
                     catch (Exception)
@@ -177,7 +176,7 @@ namespace LoginSystem.UserControls
                 }
                 else
                 {
-                    this.Parent.Controls.Remove(this);
+                    this.Dispose();
                     Forms.Main.ShowNotice("Verification process completed successfully.", 0);
                 }
             }
