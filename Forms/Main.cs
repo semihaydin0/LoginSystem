@@ -25,7 +25,6 @@ namespace LoginSystem.Forms
         private Point lastLocation;
         public static UserControls.Login lgn;
         public static UserControls.Register rgs;
-        public static Notice ntc;
         public static MainClass mc;
         public static string Query;
         public static int processValue;
@@ -99,16 +98,18 @@ namespace LoginSystem.Forms
 
         public static void ShowNotice(string _text, int _statusValue)
         {
-            ntc.NoticeText = _text;
-            ntc.pbStatus = _statusValue;
-            ntc.Show();
+            using (Notice ntc = new Notice())
+            {
+                ntc.NoticeText = _text;
+                ntc.pbStatus = _statusValue;
+                ntc.ShowDialog();
+            }
         }
 
         public static void GarbageC()
         {
             GC.Collect();
             GC.WaitForPendingFinalizers();
-            GC.Collect();
         }
 
         public static Main Instance
@@ -135,7 +136,6 @@ namespace LoginSystem.Forms
             mc = new MainClass(this);
             lgn = new UserControls.Login();
             rgs = new UserControls.Register();
-            ntc = new Notice();
             _pnlContainer.Controls.Add(lgn);
             GarbageC();
         }
