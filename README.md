@@ -1,6 +1,7 @@
 <!--
 *** Semih Aydın 2020
 -->
+![Codacy Badge](https://app.codacy.com/project/badge/Grade/cc43e3f18bf943969a028f1b239d5799)
 
 ![Image1](./Images/in-app/user.png)
 
