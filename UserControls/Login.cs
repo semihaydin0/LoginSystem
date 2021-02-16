@@ -107,6 +107,7 @@ namespace LoginSystem.UserControls
                         }
                         vrf = new Verification();
                         vrf.EmailAddress = _email;
+                        vrf.rawUsername = txtUsername.Text;
                         this.Parent.Controls.Add(vrf);
                         this.Parent.Controls.Remove(this);
                     }
@@ -130,6 +131,33 @@ namespace LoginSystem.UserControls
             }
             vrf = null;
             Forms.Main.GarbageC();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection con = new SQLiteConnection("Data Source=RememberMe.sqlite;Version=3;"))
+                {
+                    Forms.Main.Query = "select Username from Usernames";
+                    using (SQLiteCommand cmd = new SQLiteCommand(Forms.Main.Query, con))
+                    {
+                        con.Open();
+                        using (SQLiteDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                txtUsername.Text = dr["Username"].ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                Forms.Main.ShowNotice("Database error.", 1);
+                Application.Exit();
+            }
         }
 
         private void lblFooter_2_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace LoginSystem.UserControls
         }
 
         public static int processType;
-        public string Email, Username, Password;
+        public string Email, Username,rawUsername, Password;
         private int verificationCode;
         private int demandTime;
         private bool newRequests;
@@ -82,6 +82,24 @@ namespace LoginSystem.UserControls
             using (SQLiteConnection con = new SQLiteConnection("Data Source=UserRecords.sqlite;Version=3;"))
             {
                 Forms.Main.Query = "update Users set MacAddress='" + Forms.Main.SHA256Encryption(MacAddressFinder()) + "' where Email='" + EmailAddress + "'";
+                using (SQLiteCommand cmd = new SQLiteCommand(Forms.Main.Query, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=RememberMe.sqlite;Version=3;"))
+            {
+                Forms.Main.Query = "delete from Usernames";
+                using (SQLiteCommand cmd = new SQLiteCommand(Forms.Main.Query, con))
+                {
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            using (SQLiteConnection con = new SQLiteConnection("Data Source=RememberMe.sqlite;Version=3;"))
+            {
+                Forms.Main.Query = "insert into Usernames VALUES ('" + rawUsername + "')";
                 using (SQLiteCommand cmd = new SQLiteCommand(Forms.Main.Query, con))
                 {
                     con.Open();

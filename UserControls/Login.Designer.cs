@@ -234,6 +234,7 @@
             this.Controls.Add(this.txtBottomUN);
             this.Name = "Login";
             this.Size = new System.Drawing.Size(380, 280);
+            this.Load += new System.EventHandler(this.Login_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbUsername)).EndInit();
             this.ResumeLayout(false);

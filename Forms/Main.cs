@@ -73,6 +73,21 @@ namespace LoginSystem.Forms
                             cmd.ExecuteNonQuery();
                         }
                     }
+                    if (!File.Exists("RememberMe.sqlite"))
+                    {
+                        SQLiteConnection.CreateFile("RememberMe.sqlite");
+                        using (SQLiteConnection con = new SQLiteConnection("Data Source=RememberMe.sqlite;Version=3;"))
+                        {
+                            Query = @"CREATE TABLE Usernames(
+                               Username TEXT
+                            )";
+                            using (SQLiteCommand cmd = new SQLiteCommand(Query, con))
+                            {
+                                con.Open();
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
                 }
                 catch (Exception)
                 {
