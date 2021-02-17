@@ -19,7 +19,7 @@ namespace LoginSystem.Forms
         private bool mouseDown;
         private Point lastLocation;
 
-        public int pbStatus
+        public int SetPbStatus
         {
             set
             {
@@ -36,7 +36,7 @@ namespace LoginSystem.Forms
             }
         }
 
-        public string NoticeText
+        public string SetNoticeText
         {
             set
             {
