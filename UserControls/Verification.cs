@@ -19,10 +19,50 @@ namespace LoginSystem.UserControls
             InitializeComponent();
         }
 
-        public static int processType;
-        public string Email, Username,rawUsername, Password;
-        private int verificationCode;
-        private int demandTime;
+        public string EmailAddress
+        {
+            get { return lblAddress.Text; }
+            set
+            {
+                lblAddress.Text = value;
+                lblAddress.Location = new Point(380 / 2 - lblAddress.Width / 2, 41);
+                demandTime = 120;
+                newRequests = false;
+            }
+        }
+
+        public int processType
+        {
+            get { return _processType; }
+            set { value = _processType; }
+        }
+
+        public string Email
+        {
+            get { return _Email; }
+            set { value = _Email; }
+        }
+
+        public string Username
+        {
+            get { return _Username; }
+            set { value = _Username; }
+        }
+
+        public string rawUsername
+        {
+            get { return _rawUsername; }
+            set { value = _rawUsername; }
+        }
+
+        public string Password
+        {
+            get { return _Password; }
+            set { value = _Password; }
+        }
+
+        private int _processType, verificationCode, demandTime;
+        private string _Email, _Username,_rawUsername, _Password;
         private bool newRequests;
 
         private void VerificationService()
@@ -35,7 +75,6 @@ namespace LoginSystem.UserControls
                     {
                         Random rnd = new Random();
                         verificationCode = rnd.Next(100000, 999999);
-                        rnd = null;
                         using (SmtpClient client = new SmtpClient())
                         {
                             client.Credentials = new NetworkCredential("EMAILADDRESS", "PASSWORD");
@@ -49,7 +88,6 @@ namespace LoginSystem.UserControls
                             client.Send(message);
                         }
                     }
-                    Forms.Main.GarbageC();
                 }
                 catch (Exception)
                 {
@@ -139,18 +177,6 @@ namespace LoginSystem.UserControls
         {
             this.Parent.Controls.Add(uc);
             this.Dispose();
-        }
-
-        public string EmailAddress
-        {
-            get { return lblAddress.Text; }
-            set
-            {
-                lblAddress.Text = value;
-                lblAddress.Location = new Point(380 / 2 - lblAddress.Width / 2, 41);
-                demandTime = 120;
-                newRequests = false;
-            }
         }
 
         private void Verification_Load(object sender, EventArgs e)
