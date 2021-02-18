@@ -85,7 +85,7 @@ namespace LoginSystem.UserControls
                             txtEmailAddress.Text = null;
                             txtUsername.Text = null;
                             txtPassword.Text = null;
-                            Verification.processType = 1;
+                            vrf.processType = 1;
                             this.Parent.Controls.Add(vrf);
                             this.Parent.Controls.Remove(this);
                             vrf = null;

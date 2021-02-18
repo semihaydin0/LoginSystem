@@ -100,12 +100,12 @@ namespace LoginSystem.UserControls
                     }
                     else if (Forms.Main.processValue == 1)
                     {
-                        Verification.processType = 3;
+                        vrf = new Verification();
+                        vrf.processType = 3;
                         if (chxbxRememberMe.Checked == true)
                         {
-                            Verification.processType = 2;
+                            vrf.processType = 2;
                         }
-                        vrf = new Verification();
                         vrf.EmailAddress = _email;
                         vrf.rawUsername = txtUsername.Text;
                         this.Parent.Controls.Add(vrf);
