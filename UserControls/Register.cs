@@ -88,8 +88,6 @@ namespace LoginSystem.UserControls
                             vrf.processType = 1;
                             this.Parent.Controls.Add(vrf);
                             this.Parent.Controls.Remove(this);
-                            vrf = null;
-                            Forms.Main.GarbageC();
                         }
                         else if(Forms.Main.processValue == 1)
                         {
@@ -105,6 +103,7 @@ namespace LoginSystem.UserControls
                         {
                             Forms.Main.ShowNotice("Database error.", 1);
                         }
+                        
                     }
                     else
                     {

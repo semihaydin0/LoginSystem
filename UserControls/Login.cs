@@ -129,8 +129,6 @@ namespace LoginSystem.UserControls
             {
                 Forms.Main.ShowNotice("Please fill in all fields.", 1);
             }
-            vrf = null;
-            Forms.Main.GarbageC();
         }
 
         private void Login_Load(object sender, EventArgs e)

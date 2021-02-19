@@ -1,6 +1,6 @@
 ﻿//MIT License
-//Copyright(c) 2020 Semih Aydın
-//UTF - 8
+//Copyright(c) 2021 Semih Aydın
+//UTF-8
 
 using System;
 using System.IO;
@@ -20,14 +20,14 @@ namespace LoginSystem.Forms
             InitializeComponent();
         }
 
-        static Main _obj;
         private bool mouseDown;
-        private Point lastLocation;
-        public static UserControls.Login lgn;
-        public static UserControls.Register rgs;
+        private static Main _obj;
         public static MainClass mc;
         public static string Query;
+        private Point lastLocation;
         public static int processValue;
+        public static UserControls.Login lgn;
+        public static UserControls.Register rgs;
 
         public class MainClass
         {
@@ -35,6 +35,7 @@ namespace LoginSystem.Forms
             {
                 RoundCorner(MainForm);
             }
+
             private void RoundCorner(Form MainForm)
             {
                 GraphicsPath graphicpath = new GraphicsPath();
@@ -53,18 +54,18 @@ namespace LoginSystem.Forms
 
         private void IsDatabaseAvailable()
         {
-            if (!File.Exists("UserRecords.sqlite"))
+            try
             {
-                try
+                if (!File.Exists("UserRecords.sqlite"))
                 {
                     SQLiteConnection.CreateFile("UserRecords.sqlite");
                     using (SQLiteConnection con = new SQLiteConnection("Data Source=UserRecords.sqlite;Version=3;"))
                     {
                         Query = @"CREATE TABLE Users(
                                ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                               Username TEXT,
-                               Password TEXT,
-                               Email TEXT,
+                               Username TEXT NOT NULL,
+                               Password TEXT NOT NULL,
+                               Email TEXT NOT NULL,
                                MacAddress TEXT
                             )";
                         using (SQLiteCommand cmd = new SQLiteCommand(Query, con))
@@ -73,27 +74,27 @@ namespace LoginSystem.Forms
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    if (!File.Exists("RememberMe.sqlite"))
+                }
+                if (!File.Exists("RememberMe.sqlite"))
+                {
+                    SQLiteConnection.CreateFile("RememberMe.sqlite");
+                    using (SQLiteConnection con = new SQLiteConnection("Data Source=RememberMe.sqlite;Version=3;"))
                     {
-                        SQLiteConnection.CreateFile("RememberMe.sqlite");
-                        using (SQLiteConnection con = new SQLiteConnection("Data Source=RememberMe.sqlite;Version=3;"))
-                        {
-                            Query = @"CREATE TABLE Usernames(
-                               Username TEXT
+                        Query = @"CREATE TABLE Usernames(
+                               Username TEXT NOT NULL
                             )";
-                            using (SQLiteCommand cmd = new SQLiteCommand(Query, con))
-                            {
-                                con.Open();
-                                cmd.ExecuteNonQuery();
-                            }
+                        using (SQLiteCommand cmd = new SQLiteCommand(Query, con))
+                        {
+                            con.Open();
+                            cmd.ExecuteNonQuery();
                         }
                     }
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("An error occurred while trying to create the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Application.Exit();
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occurred while trying to create the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
             }
         }
 
@@ -121,12 +122,6 @@ namespace LoginSystem.Forms
             }
         }
 
-        public static void GarbageC()
-        {
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
-
         public static Main Instance
         {
             get
@@ -152,7 +147,6 @@ namespace LoginSystem.Forms
             lgn = new UserControls.Login();
             rgs = new UserControls.Register();
             _pnlContainer.Controls.Add(lgn);
-            GarbageC();
         }
 
         private void Main_MouseDown(object sender, MouseEventArgs e)
