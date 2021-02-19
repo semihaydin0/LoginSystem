@@ -27,7 +27,7 @@ If you want to test this application, you will need to enter your own email addr
 
 The verification code that will be sent to the user during registration will be sent through the account you have entered.
 
-![Important](./Images/in-app/important.png)
+![Important](./Images/in-app/verification.png)
 
 From [here](https://github.com/semihaydin0/LoginSystem/blob/main/UserControls/Verification.cs#L68-L103) you can go to the code block in the screenshot.
 
