@@ -29,7 +29,7 @@ The verification code that will be sent to the user during registration will be 
 
 ![Important](./Images/in-app/important.png)
 
-From [here](https://github.com/semihaydin0/LoginSystem/blob/main/UserControls/Verification.cs#L28-L65) you can go to the code block in the screenshot.
+From [here](https://github.com/semihaydin0/LoginSystem/blob/main/UserControls/Verification.cs#L68-L103) you can go to the code block in the screenshot.
 
 If you're having a problem, [try](https://www.google.com/settings/security/lesssecureapps) allowing low-security applications to access the email account you entered.
 
