@@ -1,7 +1,9 @@
 <!--
 *** Semih Aydın 2020
 -->
-![Codacy Badge](https://app.codacy.com/project/badge/Grade/cc43e3f18bf943969a028f1b239d5799)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/846907c318d4428c90ced2b941868605)](https://www.codacy.com/gh/semihaydin0/LoginSystem/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=semihaydin0/LoginSystem&amp;utm_campaign=Badge_Grade)
+![Last Commit](https://img.shields.io/github/last-commit/semihaydin0/LoginSystem)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ![Image1](./Images/in-app/user.png)
 
@@ -27,7 +29,7 @@ If you want to test this application, you will need to enter your own email addr
 
 The verification code that will be sent to the user during registration will be sent through the account you have entered.
 
-![Important](./Images/in-app/verification.png)
+![Important](./Images/in-app/function.png)
 
 From [here](https://github.com/semihaydin0/LoginSystem/blob/main/UserControls/Verification.cs#L68-L103) you can go to the code block in the screenshot.
 
