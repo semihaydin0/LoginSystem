@@ -34,31 +34,31 @@ namespace LoginSystem.UserControls
         public int processType
         {
             get { return _processType; }
-            set { value = _processType; }
+            set { _processType = value; }
         }
 
         public string Email
         {
             get { return _Email; }
-            set { value = _Email; }
+            set { _Email = value; }
         }
 
         public string Username
         {
             get { return _Username; }
-            set { value = _Username; }
+            set { _Username = value; }
         }
 
         public string rawUsername
         {
             get { return _rawUsername; }
-            set { value = _rawUsername; }
+            set { _rawUsername = value; }
         }
 
         public string Password
         {
             get { return _Password; }
-            set { value = _Password; }
+            set { _Password = value; }
         }
 
         private int _processType, verificationCode, demandTime;
