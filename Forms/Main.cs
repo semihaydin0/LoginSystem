@@ -116,8 +116,8 @@ namespace LoginSystem.Forms
         {
             using (Notice ntc = new Notice())
             {
-                ntc.SetNoticeText = _text;
-                ntc.SetPbStatus = _statusValue;
+                ntc.SetNoticeText(_text);
+                ntc.SetPbStatus(_statusValue);
                 ntc.ShowDialog();
             }
         }

@@ -19,30 +19,24 @@ namespace LoginSystem.Forms
         private bool mouseDown;
         private Point lastLocation;
 
-        public int SetPbStatus
+        public void SetPbStatus(int value)
         {
-            set
+            if (value == 1)
             {
-                if (value == 1)
-                {
-                    pbWarning.Visible = true;
-                    pbInfo.Visible = false;
-                }
-                else
-                {
-                    pbInfo.Visible = true;
-                    pbWarning.Visible = false;
-                }
+                pbWarning.Visible = true;
+                pbInfo.Visible = false;
+            }
+            else
+            {
+                pbInfo.Visible = true;
+                pbWarning.Visible = false;
             }
         }
 
-        public string SetNoticeText
+        public void SetNoticeText(string value)
         {
-            set
-            {
-                lblNotice.Text = value;
-                SetSize();
-            }
+            lblNotice.Text = value;
+            SetSize();
         }
 
         private void SetSize()
